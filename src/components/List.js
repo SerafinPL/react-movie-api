@@ -20,18 +20,16 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 
 import { DataContext } from "../Context/dataContext";
 
-import { 
-    useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ListMove = (props) => {
-  let view = null;
-
+  let view = <CircularProgress />;
 
   let navigate = useNavigate();
 
-    const clickHandler = (id) => {
-        navigate("/" + id);
-    }
+  const clickHandler = (id) => {
+    navigate("/" + id);
+  };
 
   const { films, setFilms, searchValue, setSearchValue } =
     useContext(DataContext);
@@ -53,17 +51,17 @@ const ListMove = (props) => {
     setpaginationStatus(false);
   }, [data]);
 
-  console.log(films)
+  console.log(films);
 
   if (paginationStatus) {
     view = <CircularProgress />;
   } else {
     if (films.Response === "True") {
       view = (
-        <Box sx={{minHeight: '80vh', width: '100%'}}>
-          <List sx={{minHeight: '80vh', width: '100%'}}>
+        <Box sx={{ minHeight: "80vh", width: "100%" }}>
+          <List sx={{ minHeight: "80vh", width: "100%" }}>
             {films.Search.map((film) => (
-              <ListItem disablePadding>
+              <ListItem disablePadding key={film.imdbID}>
                 <ListItemButton onClick={() => clickHandler(film.imdbID)}>
                   <ListItemIcon>
                     {film.Type === "movie" ? (
@@ -74,7 +72,11 @@ const ListMove = (props) => {
                       <HighQualityIcon />
                     )}
                   </ListItemIcon>
-                  <ListItemText sx={{color: '#000'}} primary={film.Title} secondary={film.Year} />
+                  <ListItemText
+                    sx={{ color: "#000" }}
+                    primary={film.Title}
+                    secondary={film.Year}
+                  />
                 </ListItemButton>
               </ListItem>
             ))}
@@ -82,7 +84,7 @@ const ListMove = (props) => {
         </Box>
       );
     } else {
-      view = films.Error;
+      view = (<Box sx={{ minHeight: "80vh", width: "100%" }}>{films.Error}</Box>);
     }
   }
 
