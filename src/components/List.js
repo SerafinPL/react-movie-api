@@ -60,8 +60,8 @@ const ListMove = (props) => {
   } else {
     if (films.Response === "True") {
       view = (
-        <Box>
-          <List sx={{minHeight: '80vh'}}>
+        <Box sx={{minHeight: '80vh', width: '100%'}}>
+          <List sx={{minHeight: '80vh', width: '100%'}}>
             {films.Search.map((film) => (
               <ListItem disablePadding>
                 <ListItemButton onClick={() => clickHandler(film.imdbID)}>
@@ -74,7 +74,7 @@ const ListMove = (props) => {
                       <HighQualityIcon />
                     )}
                   </ListItemIcon>
-                  <ListItemText primary={film.Title} secondary={film.Year} />
+                  <ListItemText sx={{color: '#000'}} primary={film.Title} secondary={film.Year} />
                 </ListItemButton>
               </ListItem>
             ))}

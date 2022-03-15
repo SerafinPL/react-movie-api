@@ -37,7 +37,7 @@ const InputSearch = (props) => {
         inputRef={inputEl}
         id="filled-basic"
         label="Search Movie"
-        variant="filled"
+        variant="outlined"
         value={searchValue}
         onChange={handleChange}
         sx={{ width: "Min(80vw, 800px)", m: 3 }}
