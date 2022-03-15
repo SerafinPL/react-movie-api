@@ -20,8 +20,18 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 
 import { DataContext } from "../Context/dataContext";
 
+import { 
+    useNavigate } from "react-router-dom";
+
 const ListMove = (props) => {
   let view = null;
+
+
+  let navigate = useNavigate();
+
+    const clickHandler = (id) => {
+        navigate("/" + id);
+    }
 
   const { films, setFilms, searchValue, setSearchValue } =
     useContext(DataContext);
@@ -43,6 +53,8 @@ const ListMove = (props) => {
     setpaginationStatus(false);
   }, [data]);
 
+  console.log(films)
+
   if (paginationStatus) {
     view = <CircularProgress />;
   } else {
@@ -52,7 +64,7 @@ const ListMove = (props) => {
           <List sx={{minHeight: '80vh'}}>
             {films.Search.map((film) => (
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => clickHandler(film.imdbID)}>
                   <ListItemIcon>
                     {film.Type === "movie" ? (
                       <TheatersIcon />
@@ -84,6 +96,7 @@ const ListMove = (props) => {
         showLastButton
         page={page}
         onChange={handleChange}
+        siblingCount={0}
       />
     </>
   );

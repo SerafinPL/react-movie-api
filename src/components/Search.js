@@ -14,8 +14,6 @@ const InputSearch = (props) => {
 
   const inputEl = useRef();
 
-  
-
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
@@ -42,7 +40,7 @@ const InputSearch = (props) => {
         variant="filled"
         value={searchValue}
         onChange={handleChange}
-        sx={{minWidth:'80vw'}}
+        sx={{ width: "Min(80vw, 800px)", m: 3 }}
       />
     </>
   );
