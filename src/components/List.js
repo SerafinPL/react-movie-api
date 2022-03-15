@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 
 import TextField from "@mui/material/TextField";
 
-import useFetchData from '../hooks/fetchHook'
+import useFetchData from "../hooks/fetchHook";
 
 import {
   List,
@@ -12,7 +12,7 @@ import {
   ListItemText,
   Pagination,
   Box,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import HighQualityIcon from "@mui/icons-material/HighQuality";
@@ -21,59 +21,66 @@ import TheatersIcon from "@mui/icons-material/Theaters";
 import { DataContext } from "../Context/dataContext";
 
 const ListMove = (props) => {
-  const { films, setFilms, searchValue, setSearchValue } = useContext(DataContext);
+  let view = null;
+
+  const { films, setFilms, searchValue, setSearchValue } =
+    useContext(DataContext);
 
   const { fetchData, data } = useFetchData();
 
-
+  const [paginationStatus, setpaginationStatus] = useState(false);
 
   const [page, setPage] = useState(1);
   const handleChange = (event, value) => {
     setPage(value);
-        
-    fetchData(searchValue, value)
-  };
+    setpaginationStatus(true);
 
-  let view = <CircularProgress/>;
+    fetchData(searchValue, value);
+  };
 
   useEffect(() => {
     setFilms(data);
+    setpaginationStatus(false);
   }, [data]);
 
-  if (films.Response === "True") {
-    view = (
-      <Box>
-        <List>
-          {films.Search.map((film) => (
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {film.Type === "movie" ? (
-                    <TheatersIcon />
-                  ) : film.Type === "series" ? (
-                    <ClosedCaptionIcon />
-                  ) : (
-                    <HighQualityIcon />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary={film.Title} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-
-        <Pagination
-          count={parseInt(films.totalResults / 10) + 1}
-          color="primary"
-          showFirstButton
-          showLastButton
-          page={page}
-          onChange={handleChange}
-        />
-      </Box>
-    );
+  if (paginationStatus) {
+    view = <CircularProgress />;
   } else {
-    view = films.Error;
+    if (films.Response === "True") {
+      view = (
+        <Box>
+          <List>
+            {films.Search.map((film) => (
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {film.Type === "movie" ? (
+                      <TheatersIcon />
+                    ) : film.Type === "series" ? (
+                      <ClosedCaptionIcon />
+                    ) : (
+                      <HighQualityIcon />
+                    )}
+                  </ListItemIcon>
+                  <ListItemText primary={film.Title} secondary={film.Year} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+
+          <Pagination
+            count={parseInt(films.totalResults / 10) + 1}
+            color="primary"
+            showFirstButton
+            showLastButton
+            page={page}
+            onChange={handleChange}
+          />
+        </Box>
+      );
+    } else {
+      view = films.Error;
+    }
   }
 
   return <>{view}</>;
