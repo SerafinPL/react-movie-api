@@ -1,41 +1,37 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 
 import TextField from "@mui/material/TextField";
 
-import useFetchData from '../hooks/fetchHook'
-import { from } from "@apollo/client";
+import useFetchData from "../hooks/fetchHook";
+
+import { DataContext } from "../Context/dataContext";
 
 const InputSearch = (props) => {
+  const { films, setFilms, searchValue, setSearchValue } =
+    useContext(DataContext);
 
-  const {fetchData, data} = useFetchData();
+  const { fetchData, data } = useFetchData();
 
   const inputEl = useRef();
 
-  const [value, setValue] = useState("Controlled");
+  
 
   const handleChange = (event) => {
-    setValue(event.target.value);
-    console.log(inputEl.current.value);
+    setSearchValue(event.target.value);
   };
 
   useEffect(() => {
-
     const timer = setTimeout(() => {
-      if (value === inputEl.current.value){
-        fetchData(value);
+      if (searchValue === inputEl.current.value) {
+        fetchData(searchValue, 1);
       }
-
     }, 500);
     return () => clearTimeout(timer);
-  }, [value]);
+  }, [searchValue]);
 
-  
   useEffect(() => {
-
-    console.log(data.Response)
+    setFilms(data);
   }, [data]);
-
-
 
   return (
     <>
@@ -44,10 +40,9 @@ const InputSearch = (props) => {
         id="filled-basic"
         label="Search Movie"
         variant="filled"
-        value={value}
+        value={searchValue}
         onChange={handleChange}
       />
-      
     </>
   );
 };

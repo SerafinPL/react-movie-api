@@ -4,9 +4,9 @@ const useFetchData = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState('');
 
-  const fetchData = useCallback(( search) => {
+  const fetchData = useCallback(( search, page) => {
     fetch(
-      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_CODE}&s=${search}`,
+      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_CODE}&s=*${search}*&page=${page}`,
       {
         method: "GET",
       
