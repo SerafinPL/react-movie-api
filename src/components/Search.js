@@ -42,6 +42,7 @@ const InputSearch = (props) => {
         variant="filled"
         value={searchValue}
         onChange={handleChange}
+        sx={{minWidth:'80vw'}}
       />
     </>
   );

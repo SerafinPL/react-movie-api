@@ -49,7 +49,7 @@ const ListMove = (props) => {
     if (films.Response === "True") {
       view = (
         <Box>
-          <List>
+          <List sx={{minHeight: '80vh'}}>
             {films.Search.map((film) => (
               <ListItem disablePadding>
                 <ListItemButton>
@@ -67,15 +67,6 @@ const ListMove = (props) => {
               </ListItem>
             ))}
           </List>
-
-          <Pagination
-            count={parseInt(films.totalResults / 10) + 1}
-            color="primary"
-            showFirstButton
-            showLastButton
-            page={page}
-            onChange={handleChange}
-          />
         </Box>
       );
     } else {
@@ -83,7 +74,19 @@ const ListMove = (props) => {
     }
   }
 
-  return <>{view}</>;
+  return (
+    <>
+      {view}{" "}
+      <Pagination
+        count={parseInt(films.totalResults / 10) + 1}
+        color="primary"
+        showFirstButton
+        showLastButton
+        page={page}
+        onChange={handleChange}
+      />
+    </>
+  );
 };
 
 export default ListMove;
