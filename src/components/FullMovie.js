@@ -76,8 +76,8 @@ const FullMovie = () => {
           flexDirection: "column",
         }}
       >
-        <Button variant="contained" onClick={clickHandler}>
-          Back to List
+        <Button variant="contained" onClick={clickHandler} sx={{m:3}}>
+           Back to List
         </Button>
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia

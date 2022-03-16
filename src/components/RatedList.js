@@ -31,7 +31,7 @@ const ListMove = (props) => {
 
   view = (
     <Box sx={{ minHeight: "80vh", width: "100%", m:3 }}>
-      <Typography variant="h5" gutterBottom component="div">
+      <Typography variant="h5" gutterBottom component="div" sx={{color: '#000'}}>
         Rated by You:
       </Typography>
       <List sx={{ minHeight: "80vh", width: "100%" }}>
