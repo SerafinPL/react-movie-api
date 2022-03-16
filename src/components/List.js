@@ -1,7 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 
-import TextField from "@mui/material/TextField";
-
 import useFetchData from "../hooks/fetchHook";
 
 import {
@@ -38,8 +36,6 @@ const ListMove = (props) => {
 
   const [paginationStatus, setpaginationStatus] = useState(false);
 
-  
-
   const handleChange = (event, value) => {
     setPage(value);
     setpaginationStatus(true);
@@ -59,7 +55,7 @@ const ListMove = (props) => {
   } else {
     if (films.Response === "True") {
       view = (
-        <Box sx={{ minHeight: "80vh", width: "100%", m:3 }}>
+        <Box sx={{ minHeight: "80vh", width: "100%", m: 3 }}>
           <List sx={{ minHeight: "80vh", width: "100%" }}>
             {films.Search.map((film) => (
               <ListItem disablePadding key={film.imdbID}>
@@ -85,7 +81,7 @@ const ListMove = (props) => {
         </Box>
       );
     } else {
-      view = (<Box sx={{ minHeight: "80vh", width: "100%" }}>{films.Error}</Box>);
+      view = <Box sx={{ minHeight: "80vh", width: "100%" }}>{films.Error}</Box>;
     }
   }
 
@@ -101,7 +97,6 @@ const ListMove = (props) => {
         onChange={handleChange}
         siblingCount={0}
       />
-      
     </>
   );
 };

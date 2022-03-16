@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
 
 import TextField from "@mui/material/TextField";
 
@@ -7,7 +7,7 @@ import useFetchData from "../hooks/fetchHook";
 import { DataContext } from "../Context/dataContext";
 
 const InputSearch = (props) => {
-  const { films, setFilms, searchValue, setSearchValue } =
+  const { page, setPage, setFilms, searchValue, setSearchValue } =
     useContext(DataContext);
 
   const { fetchData, data } = useFetchData();
@@ -21,7 +21,8 @@ const InputSearch = (props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchValue === inputEl.current.value) {
-        fetchData(searchValue, 1);
+        fetchData(searchValue, page);
+        
       }
     }, 500);
     return () => clearTimeout(timer);

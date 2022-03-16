@@ -1,13 +1,14 @@
-import { Box, CircularProgress } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+} from "@mui/material";
 
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
-import BasicRating from './Rating';
+import BasicRating from "./Rating";
 
 import { useEffect } from "react";
 
@@ -28,9 +29,7 @@ const FullMovie = () => {
 
   useEffect(() => {
     fetchMovieData(params.code);
-   
   }, []);
-
 
   let params = useParams();
 
@@ -52,32 +51,33 @@ const FullMovie = () => {
   if (Object.keys(movie).length === 0 && movie.constructor === Object) {
     console.log("start");
     view = (
-        <Box
-          sx={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <CircularProgress />
-        </Box>)
-  } else {
-    view = (
       <Box
         sx={{
           width: "100%",
-         
+          height: "100vh",
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
           flexDirection: "column",
         }}
       >
-        <Button variant="contained" onClick={clickHandler} sx={{m:3}}>
-           Back to List
+        <CircularProgress />
+      </Box>
+    );
+  } else {
+    view = (
+      <Box
+        sx={{
+          width: "100%",
+
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Button variant="contained" onClick={clickHandler} sx={{ m: 3 }}>
+          Back to List
         </Button>
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
@@ -101,10 +101,7 @@ const FullMovie = () => {
               {movie.Ratings[0].Value}
             </Typography>
             <Typography variant="h6" sx={{ p: 2 }}>
-              
-              
-            
-            <BasicRating identy={movie.imdbID}/>
+              <BasicRating identy={movie.imdbID} />
             </Typography>
           </CardContent>
         </Card>
