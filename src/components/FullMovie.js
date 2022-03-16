@@ -84,7 +84,7 @@ const FullMovie = () => {
             component="img"
             height="140"
             image={movie.Poster}
-            alt="movie poster"
+            alt="no Poster"
           />
           <CardContent>
             <Typography gutterBottom variant="h4" component="div" sx={{ p: 3 }}>
@@ -98,7 +98,7 @@ const FullMovie = () => {
             </Typography>
             <Typography variant="h6" sx={{ p: 2 }}>
               Rating IMDb:
-              {movie.Ratings[0] ? movie.Ratings[0].Value : ' no Rating'}
+              {movie.Ratings[0] ? movie.Ratings[0].Value : " no Rating"}
             </Typography>
             <Typography variant="h6" sx={{ p: 2 }}>
               <BasicRating identy={movie.imdbID} />

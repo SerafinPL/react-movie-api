@@ -13,18 +13,16 @@ const BasicRating = (props) => {
 
   const { films, setFilms, rated, setRated } = useContext(DataContext);
 
+  const [rateFromContext] = rated.filter(
+    (item) => item.identy === props.identy
+  );
 
-
-  const [rateFromContext] = rated.filter((item) => (item.identy === props.identy))
-
-    useEffect(() => {
-        if ( rateFromContext !== undefined) {
-            setScored(true);
-            setValue(rateFromContext.rate)
-        }
-    }, [])
-    
-   
+  useEffect(() => {
+    if (rateFromContext !== undefined) {
+      setScored(true);
+      setValue(rateFromContext.rate);
+    }
+  }, []);
 
   let view = null;
 
@@ -48,13 +46,14 @@ const BasicRating = (props) => {
             setValue(newValue);
             setScored(true);
 
-            
-            const [allMovieData] = films.Search.filter((item) => (item.imdbID === props.identy))
+            const [allMovieData] = films.Search.filter(
+              (item) => item.imdbID === props.identy
+            );
             console.log(allMovieData);
 
             const thisFilm = {};
 
-            thisFilm.identy =  props.identy;
+            thisFilm.identy = props.identy;
 
             thisFilm.rate = newValue;
 
@@ -62,9 +61,7 @@ const BasicRating = (props) => {
             thisFilm.Year = allMovieData.Year;
             thisFilm.Type = allMovieData.Type;
 
-            setRated([...rated, thisFilm])
-
-            
+            setRated((state) => ([...state, thisFilm]));
           }}
         />
       </Box>

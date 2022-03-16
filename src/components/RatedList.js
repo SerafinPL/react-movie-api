@@ -8,7 +8,7 @@ import {
   ListItemText,
   Box,
   CircularProgress,
-  Typography
+  Typography,
 } from "@mui/material";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import HighQualityIcon from "@mui/icons-material/HighQuality";
@@ -30,8 +30,13 @@ const ListMove = (props) => {
   const { rated } = useContext(DataContext);
 
   view = (
-    <Box sx={{ minHeight: "80vh", width: "100%", m:3 }}>
-      <Typography variant="h5" gutterBottom component="div" sx={{color: '#000'}}>
+    <Box sx={{ minHeight: "80vh", width: "100%", m: 3 }}>
+      <Typography
+        variant="h5"
+        gutterBottom
+        component="div"
+        sx={{ color: "#000" }}
+      >
         Rated by You:
       </Typography>
       <List sx={{ minHeight: "80vh", width: "100%" }}>
@@ -49,9 +54,9 @@ const ListMove = (props) => {
               </ListItemIcon>
               <ListItemText
                 sx={{ color: "#000" }}
-                primary={film.Title}
+                primary={`"${film.Title}" rate by You on ${film.rate}!`}
                 secondary={film.Year}
-              >bubu</ListItemText>
+              ></ListItemText>
             </ListItemButton>
           </ListItem>
         ))}
