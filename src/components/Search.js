@@ -34,7 +34,10 @@ const InputSearch = (props) => {
         variant="outlined"
         value={searchValue}
         onChange={handleChange}
-        sx={{ width: "Min(80vw, 800px)", m: 3 }}
+        InputLabelProps={{style: { color: '#fff' }}}
+        InputProps={{style: { borderColor: '#fff' }}}
+        sx={{ width: "Min(80vw, 800px)", m: 3, input: { color: '#fff', fill: '#fff' }, fieldset:{borderColor: '#fff!important', hover:{borderColor: '#fff'} }   }}
+        
       />
     </>
   );
