@@ -59,7 +59,7 @@ const ListMove = (props) => {
   } else {
     if (films.Response === "True") {
       view = (
-        <Box sx={{ minHeight: "80vh", width: "100%" }}>
+        <Box sx={{ minHeight: "80vh", width: "100%", m:3 }}>
           <List sx={{ minHeight: "80vh", width: "100%" }}>
             {films.Search.map((film) => (
               <ListItem disablePadding key={film.imdbID}>
@@ -101,7 +101,7 @@ const ListMove = (props) => {
         onChange={handleChange}
         siblingCount={0}
       />
-      {/* <RatedList/> */}
+      
     </>
   );
 };

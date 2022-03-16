@@ -1,8 +1,4 @@
-import { useContext, useState, useEffect } from "react";
-
-import TextField from "@mui/material/TextField";
-
-import useFetchData from "../hooks/fetchHook";
+import { useContext } from "react";
 
 import {
   List,
@@ -10,9 +6,9 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Pagination,
   Box,
   CircularProgress,
+  Typography
 } from "@mui/material";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import HighQualityIcon from "@mui/icons-material/HighQuality";
@@ -33,60 +29,37 @@ const ListMove = (props) => {
 
   const { rated } = useContext(DataContext);
 
-  
-  
-  console.log(films);
-
-  if (paginationStatus) {
-    view = <CircularProgress />;
-  } else {
-    if (films.Response === "True") {
-      view = (
-        <Box sx={{ minHeight: "80vh", width: "100%" }}>
-          <List sx={{ minHeight: "80vh", width: "100%" }}>
-            {films.Search.map((film) => (
-              <ListItem disablePadding key={film.imdbID}>
-                <ListItemButton onClick={() => clickHandler(film.imdbID)}>
-                  <ListItemIcon>
-                    {film.Type === "movie" ? (
-                      <TheatersIcon />
-                    ) : film.Type === "series" ? (
-                      <ClosedCaptionIcon />
-                    ) : (
-                      <HighQualityIcon />
-                    )}
-                  </ListItemIcon>
-                  <ListItemText
-                    sx={{ color: "#000" }}
-                    primary={film.Title}
-                    secondary={film.Year}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      );
-    } else {
-      view = <Box sx={{ minHeight: "80vh", width: "100%" }}>{films.Error}</Box>;
-    }
-  }
-
-  return (
-    <>
-      {view}{" "}
-      <Pagination
-        count={parseInt(films.totalResults / 10) + 1}
-        color="primary"
-        showFirstButton
-        showLastButton
-        page={page}
-        onChange={handleChange}
-        siblingCount={0}
-      />
-      {/* <RatedList/> */}
-    </>
+  view = (
+    <Box sx={{ minHeight: "80vh", width: "100%", m:3 }}>
+      <Typography variant="h5" gutterBottom component="div">
+        Rated by You:
+      </Typography>
+      <List sx={{ minHeight: "80vh", width: "100%" }}>
+        {rated.map((film) => (
+          <ListItem disablePadding key={film.identy}>
+            <ListItemButton onClick={() => clickHandler(film.identy)}>
+              <ListItemIcon>
+                {film.Type === "movie" ? (
+                  <TheatersIcon />
+                ) : film.Type === "series" ? (
+                  <ClosedCaptionIcon />
+                ) : (
+                  <HighQualityIcon />
+                )}
+              </ListItemIcon>
+              <ListItemText
+                sx={{ color: "#000" }}
+                primary={film.Title}
+                secondary={film.Year}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
+
+  return <>{view}</>;
 };
 
 export default ListMove;

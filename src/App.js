@@ -5,8 +5,7 @@ import List from "./components/List";
 
 import DataContextProvider from "./Context/dataContext";
 
-import { HashRouter} from "react-router-dom";
-
+import { HashRouter } from "react-router-dom";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -16,12 +15,8 @@ function App() {
   return (
     <div className="App">
       <DataContextProvider>
-      <HashRouter basename="/">
-      
-       
-
-        <Container />
-        
+        <HashRouter basename="/">
+          <Container />
         </HashRouter>
       </DataContextProvider>
     </div>

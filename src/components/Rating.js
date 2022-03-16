@@ -60,6 +60,7 @@ const BasicRating = (props) => {
 
             thisFilm.Title = allMovieData.Title;
             thisFilm.Year = allMovieData.Year;
+            thisFilm.Type = allMovieData.Type;
 
             setRated([...rated, thisFilm])
 
