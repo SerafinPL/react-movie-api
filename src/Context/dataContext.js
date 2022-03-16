@@ -8,6 +8,8 @@ export default (props) => {
 
   const [searchValue, setSearchValue] = useState("");
 
+  const [page, setPage] = useState(1);
+
   return (
     <DataContext.Provider
       value={{
@@ -15,6 +17,8 @@ export default (props) => {
         setFilms: setFilms,
         searchValue: searchValue,
         setSearchValue: setSearchValue,
+        page: page,
+        setPage: setPage,
       }}
     >
       {props.children}

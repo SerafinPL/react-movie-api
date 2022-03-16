@@ -31,14 +31,15 @@ const ListMove = (props) => {
     navigate("/" + id);
   };
 
-  const { films, setFilms, searchValue, setSearchValue } =
+  const { films, setFilms, searchValue, setSearchValue, page, setPage } =
     useContext(DataContext);
 
   const { fetchData, data } = useFetchData();
 
   const [paginationStatus, setpaginationStatus] = useState(false);
 
-  const [page, setPage] = useState(1);
+  
+
   const handleChange = (event, value) => {
     setPage(value);
     setpaginationStatus(true);
