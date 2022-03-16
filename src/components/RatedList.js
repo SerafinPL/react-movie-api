@@ -30,16 +30,16 @@ const ListMove = (props) => {
   const { rated } = useContext(DataContext);
 
   view = (
-    <Box sx={{ minHeight: "80vh", width: "100%", m: 3 }}>
+    <Box sx={{ minHeight: "80vh", width: "Min(80vw, 800px)", m: 3, mt:8 }}>
       <Typography
-        variant="h5"
+        variant="h3"
         gutterBottom
         component="div"
-        sx={{ color: "#000" }}
+        sx={{ color: "#000", textAlign: 'left' }}
       >
         Rated by You:
       </Typography>
-      <List sx={{ minHeight: "80vh", width: "100%" }}>
+      <List sx={{ minHeight: "80vh", width: "100%", }}>
         {rated.map((film) => (
           <ListItem disablePadding key={film.identy}>
             <ListItemButton onClick={() => clickHandler(film.identy)}>

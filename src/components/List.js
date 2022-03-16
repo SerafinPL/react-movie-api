@@ -11,6 +11,7 @@ import {
   Pagination,
   Box,
   CircularProgress,
+  Divider,
 } from "@mui/material";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import HighQualityIcon from "@mui/icons-material/HighQuality";
@@ -55,7 +56,7 @@ const ListMove = (props) => {
   } else {
     if (films.Response === "True") {
       view = (
-        <Box sx={{ minHeight: "80vh", width: "100%", m: 3 }}>
+        <Box sx={{ minHeight: "80vh", width: "Min(80vw, 800px)", m: 3 }}>
           <List sx={{ minHeight: "80vh", width: "100%" }}>
             {films.Search.map((film) => (
               <ListItem disablePadding key={film.imdbID}>
@@ -75,7 +76,9 @@ const ListMove = (props) => {
                     secondary={film.Year}
                   />
                 </ListItemButton>
+                
               </ListItem>
+              
             ))}
           </List>
         </Box>
@@ -96,6 +99,7 @@ const ListMove = (props) => {
         page={page}
         onChange={handleChange}
         siblingCount={0}
+        sx={{justifyContent: 'center', }}
       />
     </>
   );

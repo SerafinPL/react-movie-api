@@ -59,6 +59,7 @@ const FullMovie = () => {
           justifyContent: "space-around",
           alignItems: "center",
           flexDirection: "column",
+          pb:3
         }}
       >
         <CircularProgress />
@@ -74,6 +75,7 @@ const FullMovie = () => {
           justifyContent: "space-around",
           alignItems: "center",
           flexDirection: "column",
+          pb:3
         }}
       >
         <Button variant="contained" onClick={clickHandler} sx={{ m: 3 }}>
