@@ -6,9 +6,13 @@ export const DataContext = React.createContext({});
 export default (props) => {
   const [films, setFilms] = useState([]);
 
+  const [rated, setRated] = useState([]);
+
   const [searchValue, setSearchValue] = useState("");
 
   const [page, setPage] = useState(1);
+
+  const addRating = () => {};
 
   return (
     <DataContext.Provider
@@ -19,6 +23,8 @@ export default (props) => {
         setSearchValue: setSearchValue,
         page: page,
         setPage: setPage,
+        rated: rated,
+        setRated: setRated,
       }}
     >
       {props.children}

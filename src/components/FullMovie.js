@@ -7,6 +7,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+import BasicRating from './Rating';
+
 import { useEffect } from "react";
 
 import { useParams } from "react-router-dom";
@@ -26,13 +28,9 @@ const FullMovie = () => {
 
   useEffect(() => {
     fetchMovieData(params.code);
-    console.log(movie);
+   
   }, []);
 
-  useEffect(() => {
-    console.log(movie);
-  }, [movie]);
-  console.log(movie);
 
   let params = useParams();
 
@@ -53,12 +51,25 @@ const FullMovie = () => {
 
   if (Object.keys(movie).length === 0 && movie.constructor === Object) {
     console.log("start");
+    view = (
+        <Box
+          sx={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <CircularProgress />
+        </Box>)
   } else {
     view = (
       <Box
         sx={{
           width: "100%",
-          height: "100vh",
+         
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",
@@ -88,6 +99,12 @@ const FullMovie = () => {
             <Typography variant="h6" sx={{ p: 2 }}>
               Rating IMDb:
               {movie.Ratings[0].Value}
+            </Typography>
+            <Typography variant="h6" sx={{ p: 2 }}>
+              
+              
+            
+            <BasicRating identy={movie.imdbID}/>
             </Typography>
           </CardContent>
         </Card>
