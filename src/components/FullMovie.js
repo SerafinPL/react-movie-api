@@ -81,10 +81,10 @@ const FullMovie = () => {
         <Button variant="contained" onClick={clickHandler} sx={{ m: 3 }}>
           Back to List
         </Button>
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 'Min(500px, 95vw)' }}>
           <CardMedia
             component="img"
-            height="140"
+            height="400"
             image={movie.Poster}
             alt="no Poster"
           />

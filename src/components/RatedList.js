@@ -8,7 +8,7 @@ import {
   ListItemText,
   Box,
   CircularProgress,
-  Typography,
+  Typography,Rating,
 } from "@mui/material";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 import HighQualityIcon from "@mui/icons-material/HighQuality";
@@ -41,6 +41,7 @@ const ListMove = (props) => {
       </Typography>
       <List sx={{ minHeight: "80vh", width: "100%", }}>
         {rated.map((film) => (
+          <>
           <ListItem disablePadding key={film.identy}>
             <ListItemButton onClick={() => clickHandler(film.identy)}>
               <ListItemIcon>
@@ -54,11 +55,15 @@ const ListMove = (props) => {
               </ListItemIcon>
               <ListItemText
                 sx={{ color: "#000" }}
-                primary={`"${film.Title}" rate by You on ${film.rate}!`}
+                primary={`"${film.Title}"`}
                 secondary={film.Year}
               ></ListItemText>
+              
             </ListItemButton>
+            
           </ListItem>
+          <Rating name="simple-controlled" value={film.rate} max={10} readOnly sx={{textAlign: 'center'}}/>
+          </>
         ))}
       </List>
     </Box>

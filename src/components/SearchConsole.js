@@ -8,7 +8,7 @@ const SearchConsole = (props) => (
   <>
     <header className="App-header">
       <Search />
-      <Paper elevation={3} sx={{ width: "Min(80vw, 800px)", m: 3, pb: 3 }}>
+      <Paper elevation={3} sx={{ width: "Min(99vw, 800px)", m: 3, pb: 3 }}>
         <List />
       </Paper>
     </header>

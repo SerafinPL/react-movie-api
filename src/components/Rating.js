@@ -32,7 +32,7 @@ const BasicRating = (props) => {
     view = (
       <Box>
         <Typography component="legend">You've rated this!</Typography>
-        <Rating name="simple-controlled" value={value} readOnly />
+        <Rating name="simple-controlled" value={value} max={10} readOnly />
       </Box>
     );
   } else {
@@ -41,6 +41,7 @@ const BasicRating = (props) => {
         <Typography component="legend">Your rating</Typography>
         <Rating
           name="simple-controlled"
+          max={10}
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
