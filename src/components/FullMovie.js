@@ -98,7 +98,7 @@ const FullMovie = () => {
             </Typography>
             <Typography variant="h6" sx={{ p: 2 }}>
               Rating IMDb:
-              {movie.Ratings[0].Value}
+              {movie.Ratings[0] ? movie.Ratings[0].Value : ' no Rating'}
             </Typography>
             <Typography variant="h6" sx={{ p: 2 }}>
               <BasicRating identy={movie.imdbID} />

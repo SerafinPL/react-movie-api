@@ -51,7 +51,7 @@ const ListMove = (props) => {
                 sx={{ color: "#000" }}
                 primary={film.Title}
                 secondary={film.Year}
-              />
+              >bubu</ListItemText>
             </ListItemButton>
           </ListItem>
         ))}

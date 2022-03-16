@@ -40,7 +40,7 @@ const ListMove = (props) => {
     setPage(value);
     setpaginationStatus(true);
 
-    fetchData(searchValue, value);
+   fetchData(searchValue, value);
   };
 
   useEffect(() => {

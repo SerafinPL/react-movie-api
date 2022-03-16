@@ -5,9 +5,10 @@ import TextField from "@mui/material/TextField";
 import useFetchData from "../hooks/fetchHook";
 
 import { DataContext } from "../Context/dataContext";
+import { SecurityUpdateGood } from "@mui/icons-material";
 
 const InputSearch = (props) => {
-  const { page, setPage, setFilms, searchValue, setSearchValue } =
+  const { page,setPage,  setFilms, searchValue, setSearchValue } =
     useContext(DataContext);
 
   const { fetchData, data } = useFetchData();
@@ -16,21 +17,30 @@ const InputSearch = (props) => {
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
+    fetchData(event.target.value, 1);
+    setPage(1);
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (searchValue === inputEl.current.value) {
-        fetchData(searchValue, page);
-        
-      }
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [searchValue]);
+  
 
   useEffect(() => {
+  //   // const timer = setTimeout(() => {
+  //   //   if (searchValue === inputEl.current.value) {
+
+        fetchData(searchValue, page);
+        
+        
+  //     // }
+  //   // }, 500);
+  //   // return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+
     setFilms(data);
   }, [data]);
+
+
 
   return (
     <>
