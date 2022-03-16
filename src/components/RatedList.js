@@ -31,27 +31,10 @@ const ListMove = (props) => {
     navigate("/" + id);
   };
 
-  const { films, setFilms, searchValue, setSearchValue, page, setPage } =
-    useContext(DataContext);
-
-  const { fetchData, data } = useFetchData();
-
-  const [paginationStatus, setpaginationStatus] = useState(false);
+  const { rated } = useContext(DataContext);
 
   
-
-  const handleChange = (event, value) => {
-    setPage(value);
-    setpaginationStatus(true);
-
-    fetchData(searchValue, value);
-  };
-
-  useEffect(() => {
-    setFilms(data);
-    setpaginationStatus(false);
-  }, [data]);
-
+  
   console.log(films);
 
   if (paginationStatus) {
@@ -85,7 +68,7 @@ const ListMove = (props) => {
         </Box>
       );
     } else {
-      view = (<Box sx={{ minHeight: "80vh", width: "100%" }}>{films.Error}</Box>);
+      view = <Box sx={{ minHeight: "80vh", width: "100%" }}>{films.Error}</Box>;
     }
   }
 
