@@ -1,6 +1,7 @@
 #  Kuba Koder introduce Movie Search Engine React App
 
-### online version: 
+### online version: https://serafinpl.github.io/react-movie-api/
+## must enable insecure content to run this app properly 
 
 
 ### Stack: 
