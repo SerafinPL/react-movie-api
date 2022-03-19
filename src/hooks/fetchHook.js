@@ -10,6 +10,14 @@ const useFetchData = () => {
       `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_CODE}&s=*${search}*&page=${page}`,
       {
         method: "GET",
+        mode: "no-cors",
+        headers: {
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "true",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        },
       }
     )
       .then((res) => {
@@ -40,6 +48,14 @@ const useFetchData = () => {
       `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_CODE}&i=${id}`,
       {
         method: "GET",
+        mode: "no-cors",
+        headers: {
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "true",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        },
       }
     )
       .then((res) => {
